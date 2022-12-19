@@ -47,27 +47,27 @@ The app has the following screens:
 
 The login screen allows users to sign in to the app. It includes a form for entering the user's email and password, as well as buttons for logging in and creating a new account.
 
-![[assets/README/loginPage.png]]
+![loginPage](assets/README/loginPage.png)
 
 ### Settings
 
 The settings screen allows users to customize their app experience. It includes options for changing the map style, enabling notifications, and more.
 
-![[assets/README/settings.png]]
+![settings](assets/README/settings.png)
 
 ### Main
 
 The main screen displays a map of activities in the user's area. It includes a search bar for finding specific activities, as well as markers on the map that represent each activity.
 
-![[assets/README/main.png]]
+![main](assets/README/main.png)
 
-![[assets/README/mainSearchBarResult.png]]
+![searchBar](assets/README/mainSearchBarResult.png)
 
 ### Detailed
 
 The detailed screen displays more information about a specific activity. It includes the activity's location, description, and any other relevant details.
 
-![[assets/README/singleEvent.png]]
+![singleEvent](assets/README/singleEvent.png)
 
 ## Dependencies
 
