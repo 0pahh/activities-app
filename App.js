@@ -1,5 +1,16 @@
-import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
+import { SUPABASE_KEY } from "@env";
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+import HomeScreen from './pages/HomeScreen'
+import LoginScreen from './pages/LoginScreen'
+import SettingsScreen from './pages/SettingsScreen'
+
+const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
+
 import supabase from "./Database.js";
 
 export default function App() {
@@ -20,7 +31,7 @@ export default function App() {
   }, []);
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app! </Text>
+      <Text>Open up App.js to start working on your app!</Text>
       <StatusBar style="auto" />
     </View>
   );
