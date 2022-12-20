@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { StyleSheet, Text, View, FlatList, Image } from "react-native";
 
 import supabase from "../config/supabaseClient.js";
-const bucketURL =
-  "https://cvabsatvtyeranjwevdb.supabase.co/storage/v1/object/public/medias/";
+const bucketURL = "https://cvabsatvtyeranjwevdb.supabase.co/storage/v1/object/public/medias/";
+
 export default function HomeScreen() {
   const [activities, setActivities] = useState(null);
   const [errors, setErrors] = useState(null);
