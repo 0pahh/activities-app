@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import { StyleSheet, Text, View, FlatList } from "react-native";
+import { StyleSheet, Text, View, FlatList, Image } from "react-native";
 
-import supabase from "./config/supabaseClient.js";
-
+import supabase from "../config/supabaseClient.js";
+const bucketURL =
+  "https://cvabsatvtyeranjwevdb.supabase.co/storage/v1/object/public/medias/";
 export default function HomeScreen() {
   const [activities, setActivities] = useState(null);
   const [errors, setErrors] = useState(null);
@@ -15,13 +16,7 @@ export default function HomeScreen() {
       const { data, error } = await supabase
         .from("activities")
         .select(
-          "name",
-          "description",
-          "localisation",
-          "price",
-          "lat",
-          "lng",
-          "created_at"
+          "name, description, activity_type(label), localisation, price, lat, lng, created_at, image_name"
         );
       if (data) setActivities(data);
       if (error) console.log(error);
@@ -34,12 +29,12 @@ export default function HomeScreen() {
   const renderActivity = ({ item, index, separator }) => {
     return (
       <View>
+        <Image
+          style={styles.image}
+          source={{ uri: bucketURL + item.image_name }}
+        />
         <Text>{item.name}</Text>
-        <Text>{item.description}</Text>
-        <Text>{item.localisation}</Text>
-        <Text>{item.price}</Text>
-        <Text>{item.lat}</Text>
-        <Text>{item.lng}</Text>
+        <Text>{item.activity_type.label}</Text>
         <Text>{item.created_at}</Text>
       </View>
     );
@@ -55,3 +50,12 @@ export default function HomeScreen() {
     </View>
   );
 }
+const styles = StyleSheet.create({
+  image: {
+    marginTop: 15,
+    marginBottom: 15,
+    width: 50,
+    height: 50,
+    resizeMode: "contain",
+  },
+});
