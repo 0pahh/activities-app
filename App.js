@@ -13,6 +13,21 @@ const Tab = createBottomTabNavigator();
 
 
 export default function App() {
+  const [activities, setActivities] = useState(null);
+  useEffect(() => {
+    const test = async () => {
+      try {
+        const { data, error } = await supabase.from("activities").select();
+        // console.log(data);
+        setActivities(data);
+        console.log(activities);
+      } catch (error) {
+        console.log(error);
+      }
+      console.log("fir2st");
+    };
+    test();
+  }, []);
   return (
     <NavigationContainer>
         <Tab.Navigator>
