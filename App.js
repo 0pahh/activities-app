@@ -7,30 +7,10 @@ import HomeScreen from "./pages/HomeScreen";
 import LoginScreen from "./pages/LoginScreen";
 import SettingsScreen from "./pages/SettingsScreen";
 
-import { useState, useEffect } from "react";
-
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-import supabase from "./config/supabaseClient.js";
-
 export default function App() {
-  const [activities, setActivities] = useState(null);
-  const [errors, setErrors] = useState(null);
-  useEffect(() => {
-    loadActivitiesType();
-  }, []);
-
-  const loadActivitiesType = async () => {
-    try {
-      const { data, error } = await supabase.from("activity_type").select();
-      if (data) setActivities(data);
-    } catch (error) {
-      setActivities(null);
-      setErrors("Error loading activities type");
-    }
-  };
-
   return (
     <NavigationContainer>
       <Tab.Navigator>
