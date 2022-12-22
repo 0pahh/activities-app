@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 
-import supabase from "../config/supabaseClient.js";
-
 import Map from "../components/Map";
 import Modal from "../components/Modal.js";
+import supabase from "../config/supabaseClient.js";
 
 const HomeScreen = () => {
   const [activities, setActivities] = useState(null);
