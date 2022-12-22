@@ -10,6 +10,6 @@ npm-debug.*
 *.orig.*
 web-build/
 .env
-
+.dccache
 # macOS
 .DS_Store

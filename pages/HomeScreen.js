@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
-import { StyleSheet, Text, View, FlatList, Image } from "react-native";
+import { StyleSheet, Text, View, Image } from "react-native";
 
+import Map from "../components/Map";
+import Modal from "../components/Modal.js";
 import supabase from "../config/supabaseClient.js";
-const bucketURL = "https://cvabsatvtyeranjwevdb.supabase.co/storage/v1/object/public/medias/";
 
-export default function HomeScreen() {
+const HomeScreen = () => {
   const [activities, setActivities] = useState(null);
+  const [modalActivity, setModalActivity] = useState(null);
   const [errors, setErrors] = useState(null);
+
   useEffect(() => {
     loadActivities();
   }, []);
@@ -16,9 +19,10 @@ export default function HomeScreen() {
       const { data, error } = await supabase
         .from("activities")
         .select(
-          "name, description, activity_type(label), localisation, price, lat, lng, created_at, image_name"
+          "activity_id, name, description, activity_type(label), localisation, price, lat, lng, created_at, image_name"
         );
       if (data) setActivities(data);
+
       if (error) console.log(error);
     } catch (err) {
       setActivities(null);
@@ -26,36 +30,39 @@ export default function HomeScreen() {
     }
   };
 
-  const renderActivity = ({ item, index, separator }) => {
-    return (
-      <View>
-        <Image
-          style={styles.image}
-          source={{ uri: bucketURL + item.image_name }}
-        />
-        <Text>{item.name}</Text>
-        <Text>{item.activity_type.label}</Text>
-        <Text>{item.created_at}</Text>
-      </View>
-    );
+  const showModal = (activity) => {
+    setModalActivity(activity);
+  };
+
+  const handleCloseModal = () => {
+    setModalActivity(null);
   };
 
   return (
-    <View>
-      {activities != null ? (
-        <FlatList data={activities} renderItem={renderActivity} />
-      ) : (
-        <Text>No data</Text>
+    <View
+      style={{
+        ...StyleSheet.absoluteFillObject,
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Map activities={activities} showModal={showModal}></Map>
+      {modalActivity && (
+        <Modal
+          style={styles.modal}
+          activity={modalActivity}
+          closeModal={handleCloseModal}
+        ></Modal>
       )}
     </View>
   );
-}
+};
 const styles = StyleSheet.create({
-  image: {
-    marginTop: 15,
-    marginBottom: 15,
-    width: 50,
-    height: 50,
-    resizeMode: "contain",
+  container: {
+    ...StyleSheet.absoluteFillObject,
+  },
+  modal: {
+    margin: 20,
   },
 });
+export default HomeScreen;
