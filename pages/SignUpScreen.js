@@ -13,23 +13,20 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 
 import supabase from "../config/supabaseClient";
 
-export default function LoginScreen({ navigation }) {
+export default function SignUpScreen({ navigation }) {
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const [showPassword, setShowPassword] = useState(false);
-  const [remember, setRemember] = useState(false);
+
   const [error, setError] = useState("");
-  const [passwordReqMet, setPasswordReqMet] = useState(false); // added state variable to track if password requirements are met
+  const [passwordReqMet, setPasswordReqMet] = useState(false);
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
 
-  const toggleRemember = () => {
-    setRemember(!remember);
-  };
-
-  // added function to check if password requirements are met
   const checkPasswordRequirements = () => {
     // requirements for password:
     // - at least 8 characters long
@@ -62,12 +59,11 @@ export default function LoginScreen({ navigation }) {
     return numberRegex.test(password);
   };
 
-  const handleLogin = async () => {
+  const handleSignUp = async () => {
     try {
       console.log(email);
       console.log(password);
       const { user, error } = await supabase.auth.signUp({
-        //change to 'signUp' to sign up new user
         email: email,
         password: password,
       });
@@ -75,10 +71,10 @@ export default function LoginScreen({ navigation }) {
         navigation.navigate("Home");
         Alert.alert(
           "Success",
-          `You have been successfully logged in as ${email}`
+          `You have been successfully sign up as ${email}`
         );
       } else {
-        Alert.alert(`Not logged in beacuse ${error}`);
+        Alert.alert(`Not sign up beacuse ${error}`);
       }
     } catch (error) {
       setError(error.message);
@@ -87,7 +83,7 @@ export default function LoginScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.headerText}>Welcome Back</Text>
+      <Text style={styles.headerText}>Sign Up page</Text>
       {error && <Text style={styles.error}>{error}</Text>}
       <TextInput
         style={styles.input}
@@ -188,12 +184,7 @@ export default function LoginScreen({ navigation }) {
             {showPassword ? "Hide" : "Show"} Password
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={toggleRemember}>
-          <Text style={styles.buttonText}>
-            {remember ? "Forget" : "Remember"} Me
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={handleLogin}>
+        <TouchableOpacity style={styles.button} onPress={handleSignUp}>
           <Text style={styles.buttonText}>Log In</Text>
         </TouchableOpacity>
       </View>
