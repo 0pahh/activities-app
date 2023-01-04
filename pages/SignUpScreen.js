@@ -1,17 +1,12 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  TouchableOpacity,
-  Alert,
-  SafeAreaView,
-} from "react-native";
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Alert} from "react-native";
 import React, { useState } from "react";
 import { createClient } from "@supabase/supabase-js";
-import Ionicons from "@expo/vector-icons/Ionicons";
+import { MD3LightTheme as DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
 
+import Ionicons from "@expo/vector-icons/Ionicons";
 import supabase from "../config/supabaseClient";
+
+import theme from "../config/theme";
 
 export default function SignUpScreen({ navigation }) {
 
@@ -194,34 +189,35 @@ export default function SignUpScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#333",
+    backgroundColor: theme.colors.background,
     alignItems: "center",
     justifyContent: "center",
   },
   headerText: {
     fontSize: 24,
-    color: "#fff",
+    color: theme.colors.primary,
     marginBottom: 20,
   },
   input: {
     width: "80%",
     height: 40,
-    borderColor: "gray",
+    borderColor: theme.colors.blue,
     borderWidth: 1,
     marginBottom: 20,
     paddingHorizontal: 10,
-    color: "#fff",
+    color: theme.colors.whiteTxt,
   },
   button: {
     width: "80%",
-    backgroundColor: "#444",
+    backgroundColor: theme.colors.lightblue,
     paddingVertical: 10,
     marginBottom: 20,
   },
   buttonText: {
-    color: "#fff",
+    color: theme.colors.whiteTxt,
     textAlign: "center",
     fontSize: 16,
+    fontWeight: "700"
   },
   passwordCheckIcon: {
     width: 20,
@@ -236,7 +232,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     display: "flex",
     flexDirection: "row",
-    color: "#fff"
+    color: theme.colors.blue
   },
   loginButtons: {
     width: "100%",
