@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { StyleSheet, View } from "react-native";
 
 import * as Location from "expo-location";

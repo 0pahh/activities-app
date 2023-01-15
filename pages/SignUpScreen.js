@@ -14,7 +14,6 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import supabase from "../config/supabaseClient";
 
 export default function SignUpScreen({ navigation }) {
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -55,7 +54,7 @@ export default function SignUpScreen({ navigation }) {
   };
 
   const checkNumber = () => {
-    const numberRegex = /[0-9]/;
+    const numberRegex = /\d/;
     return numberRegex.test(password);
   };
 
@@ -236,12 +235,12 @@ const styles = StyleSheet.create({
     fontSize: 14,
     display: "flex",
     flexDirection: "row",
-    color: "#fff"
+    color: "#fff",
   },
   loginButtons: {
     width: "100%",
     display: "flex",
     flexDirection: "column",
-    alignItems: "center"
-  }
+    alignItems: "center",
+  },
 });
