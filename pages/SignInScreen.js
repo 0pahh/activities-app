@@ -7,8 +7,11 @@ import {
   Alert,
 } from "react-native";
 import React, { useState } from "react";
+import { MD3LightTheme as DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
 
 import supabase from "../config/supabaseClient";
+import theme from "../config/theme";
+
 
 export default function SignUpScreen({ navigation }) {
 
@@ -83,34 +86,35 @@ export default function SignUpScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#333",
+    backgroundColor: theme.colors.background,
     alignItems: "center",
     justifyContent: "center",
   },
   headerText: {
     fontSize: 24,
-    color: "#fff",
+    color: theme.colors.primary,
     marginBottom: 20,
   },
   input: {
     width: "80%",
     height: 40,
-    borderColor: "gray",
+    borderColor: theme.colors.blue,
     borderWidth: 1,
     marginBottom: 20,
     paddingHorizontal: 10,
-    color: "#fff",
+    color: theme.colors.background,
   },
   button: {
     width: "80%",
-    backgroundColor: "#444",
+    backgroundColor: theme.colors.lightblue,
     paddingVertical: 10,
     marginBottom: 20,
   },
   buttonText: {
-    color: "#fff",
+    color: theme.colors.background,
     textAlign: "center",
     fontSize: 16,
+    fontWeight: "700"
   },
   passwordCheckIcon: {
     width: 20,
@@ -120,12 +124,6 @@ const styles = StyleSheet.create({
   requirementsPhrase: {
     display: "flex",
     justifyContent: "flex-start",
-  },
-  requirementsTxt: {
-    fontSize: 14,
-    display: "flex",
-    flexDirection: "row",
-    color: "#fff"
   },
   loginButtons: {
     width: "100%",

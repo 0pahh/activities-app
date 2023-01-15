@@ -1,11 +1,15 @@
 import { useState, useEffect } from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
+import { MD3LightTheme as DefaultTheme } from 'react-native-paper';
 
 import Map from "../components/Map";
 import Modal from "../components/Modal.js";
 import supabase from "../config/supabaseClient.js";
 
+import theme from "../config/theme";
+
 const HomeScreen = () => {
+
   const [activities, setActivities] = useState(null);
   const [modalActivity, setModalActivity] = useState(null);
   const [errors, setErrors] = useState(null);
