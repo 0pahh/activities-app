@@ -16,24 +16,6 @@ git clone https://github.com/0pahh/activities-app.git
 
 2.  Install the dependencies:
 
-# Activities App
-
-Welcome to the Activity Map App ! This app is designed to help you find and plan activities in your area. Whether you're looking for outdoor adventures, cultural events, or just want to explore what your city has to offer, the Activity Map App has you covered.
-
-With the app, you can view a map of activities in your area and see what's happening near you. You can also view details about each activity, including its location and a description of what it involves. And if you want to add your own activity to the map, you can do that too ! (WIP)
-
-The Activity Map App is built using React Native and the React Native Paper library, which allows to create a material design look and feel in the app. It also uses the React Native Maps library to display the map, and the Expo platform to simplify the development process. The backend part of the project is handled by Supabase, which is an open-source Firebase alternative.
-
-## Getting Started
-
-To get started with this app, follow these steps:
-
-1.  Clone the repository:
-
-git clone https://github.com/0pahh/activities-app.git
-
-2.  Install the dependencies:
-
 cd activity-map-app yarn install
 
 3.  Start the app:
