@@ -1,6 +1,6 @@
 import { useState, useMemo, useEffect } from "react";
 import { StyleSheet, View } from "react-native";
-
+import React from "react";
 import * as Location from "expo-location";
 import MapView, { Marker } from "react-native-maps";
 import SearchBar from "./SearchBar";
@@ -40,6 +40,7 @@ export default function Map({ activities, showModal }) {
         setErrorMsg("Permission to access location was denied");
         return;
       }
+      console.log(status);
     } catch (error) {
       setErrorMsg(error.message);
     }
@@ -49,6 +50,7 @@ export default function Map({ activities, showModal }) {
     try {
       const location = await Location.getCurrentPositionAsync({});
       setLocation(location);
+      console.log(location)
     } catch (error) {
       setErrorMsg(error.message);
     }
@@ -56,6 +58,7 @@ export default function Map({ activities, showModal }) {
 
   const handleClick = (activity) => {
     showModal(activity);
+    console.log(activity)
   };
 
   const handleFilterActivities = (activitiesFiltered) => {
@@ -70,8 +73,7 @@ export default function Map({ activities, showModal }) {
           activities={activities}
           filterActivities={(event) => handleFilterActivities(event)}
         />
-      </View>
-
+      </View>00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
       <MapView
         showsUserLocation
         region={region}

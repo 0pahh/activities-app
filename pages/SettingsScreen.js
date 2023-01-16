@@ -1,5 +1,5 @@
 import { auth } from '@supabase/supabase-js';
-import { Modal, StyleSheet, View, TouchableOpacity, Text } from 'react-native';
+import { Modal, StyleSheet, View, TouchableOpacity, Text, TextInput, Switch } from 'react-native';
 import React, { useState } from "react";
 import { MD3LightTheme as DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
 
@@ -13,25 +13,38 @@ export default function SettingsScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <Text style={styles.headerText}>Settings page</Text>
-      {error && <Text style={styles.error}>{error}</Text>}
-      <View style={styles.settingsButtons}>
-        <TouchableOpacity style={styles.button} onPress={() => setModalVisible(true)}>
-          <Text style={styles.buttonText}>Show Profile</Text>
-        </TouchableOpacity>
+      <View style={styles.sectionContainer}>
+          <View style={styles.sectionContainer}>
+            <View style={styles.switchContainer}>
+              <Text>Others settings</Text>
+              <Switch style={styles.switch} />
+            </View>
+          </View>
+          <View style={styles.sectionContainer}>
+            <View style={styles.switchContainer}>
+              <Text>Others settings</Text>
+              <Switch style={styles.switch} />
+            </View>
+          </View>
+          <View style={styles.sectionContainer}>
+            <View style={styles.switchContainer}>
+              <Text>Dark Mode</Text>
+              <Switch style={styles.switch} />
+            </View>
+          </View>
+          <View style={styles.sectionContainer}>
+            <View style={styles.switchContainer}>
+              <Text>Others settings</Text>
+              <Switch style={styles.switch} />
+            </View>
+          </View>
+          <View style={styles.sectionContainer}>
+            <View style={styles.switchContainer}>
+              <Text>Others settings</Text>
+              <Switch style={styles.switch} />
+            </View>
+          </View>
       </View>
-      <Modal
-      animationType='fade'
-        visible={modalVisible}
-        style={styles.modal}
-        onRequestClose={() => setModalVisible(false)}
-      >
-        <View style={styles.modalContainer}>
-          <Text>This is the modal content</Text>
-          <TouchableOpacity onPress={() => setModalVisible(false)}>
-            <Text>Close</Text>
-          </TouchableOpacity>
-        </View>
-      </Modal>
     </View>
   );
 }
@@ -44,37 +57,63 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: "100%",
     height: "100%",
+    padding: 10,
   },
   headerText: {
     fontSize: 24,
     color: theme.colors.primary,
     marginBottom: 20,
   },
-  button: {
-    width: "80%",
-    backgroundColor: theme.colors.lightblue,
-    paddingVertical: 10,
+  sectionContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    alignContent: 'center',
+    alignItems: 'center',
     marginBottom: 20,
+    padding: 20,
+    width: '100%',
+    
   },
-  buttonText: {
-    color: theme.colors.whiteTxt,
-    textAlign: "center",
-    fontSize: 16,
-    fontWeight: "700"
+  sectionTitle: {
+    fontWeight: 'bold',
+    marginBottom: 10,
   },
-  settingsButtons: {
-    width: "100%",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center"
+  inputContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: 20,
+    width: '100%'
   },
-  modalContainer: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "red",
-    width: "80%",
-    height: "20%",
-    margin: 0,
+  input: {
+    borderWidth: 1,
+    borderColor: 'gray',
+    padding: 10,
+    width: '48%',
+    marginBottom: 10,
+  },
+  switchContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 10,
+    padding: 20,
+    width: '100%',
+    backgroundColor: '#90E0EF',
+    borderRadius: 20,
+  },
+  switch: {
+    marginLeft: 10,
+  },
+  logoutButton: {
+    backgroundColor: 'red',
+    padding: 10,
+    alignItems: 'center',
+    padding: 20,
+    width: '100%'
+  },
+  logoutButtonText: {
+    color: 'white',
+    fontWeight: 'bold',
   },
 });
